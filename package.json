@@ -1,0 +1,28 @@
+{
+  "name": "web16_nem-201_fw16_026",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saradhii/WEB16_NEM-201_FW16_026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saradhii/WEB16_NEM-201_FW16_026/issues"
+  },
+  "homepage": "https://github.com/Saradhii/WEB16_NEM-201_FW16_026#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.2",
+    "nodemon": "^2.0.16"
+  }
+}

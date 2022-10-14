@@ -1,0 +1,82 @@
+[
+    {
+        "name":"Shirts",
+        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
+        "hscode":"6205.00.00.00",
+        "category":"Cotton",
+        "level":"IV"
+    },
+    {
+        "name":"Face Creame",
+        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
+        "hscode":"6205.00.00.00",
+        "category":"Cotton",
+        "level":"IV"
+    },
+    {
+        "name":"Mobiles",
+        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
+        "hscode":"6205.00.00.00",
+        "category":"Cotton",
+        "level":"IV"
+    },
+    {
+        "name":"Tires",
+        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
+        "hscode":"6205.00.00.00",
+        "category":"Cotton",
+        "level":"IV"
+    }
+]
+
+[
+    {
+        "name":"Shirts",
+        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
+        "hscode":"6205.00.00.00",
+        "category":"Cotton",
+        "level":"IV"
+    },
+     {
+    "name":"Gold",
+    "hscode": "710811.00.00",
+    "description": "Metals; gold, non-monetary, powder",
+    "category":"Metal",
+    "level": "VI"
+  },
+  {
+    "name": "Horses",
+    "hscode": "010121.00.00",
+    "description": "Horses; live, pure-bred breeding animals",
+    "parent": "Animals",
+    "level": "VI"
+  },
+  {
+    "name": "Spices",
+    "hscode": "090411.00.00",
+    "description": "Spices; pepper (of the genus piper), neither crushed nor ground",
+    "parent": "Spices",
+    "level": "VI"
+  },
+  {
+    "name": "Vegetable Oils",
+    "hscode": "150710.00.00",
+    "description": "Vegetable oils; soya-bean oil and its fractions, crude, whether or not degummed, not chemically modified",
+    "parent": "Vegetable Oils",
+    "level": "VI"
+  },
+  {
+    "name": "Meat",
+    "hscode": "16.00.00.00.00",
+    "description": "Meat, fish, crustaceans, molluscs or other aquatic invertebrates, or insects; preparations thereof",
+    "parent": "Meat",
+    "level": "II"
+  },
+    {
+    "name": "Sulphuric Acid",
+    "hscode": "280700.00.00",
+    "description": "Sulphuric acid; oleum",
+    "parent": "Sulphuric acid",
+    "level": "VI"
+  },
+]
