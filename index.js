@@ -31,5 +31,5 @@ app.listen(PORT, async () => {
   } catch (err) {
     console.log(err);
   }
-  console.log(`Backend is working at ${PORT}`);
+  console.log(`Backend is working http://localhost:${PORT}/`);
 });
