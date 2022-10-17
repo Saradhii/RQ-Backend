@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const RequestQoutesRoute = require("./routes/RequestQuotesRoute");
 const FindHSRoute = require("./routes/FindHSRoute");
+const CityRoute = require("./routes/CityRoutes");
 // App creation
 const app = express();
 //Needed middlewares
@@ -15,6 +16,7 @@ app.use(
 );
 app.use("/requestquote", RequestQoutesRoute);
 app.use("/hsroute", FindHSRoute);
+app.use("/city",CityRoute);
 //testing
 app.get("/", (req, res) => {
   res.send("Request Quote backend working....");
