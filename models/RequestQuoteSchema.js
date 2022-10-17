@@ -4,7 +4,7 @@ const RequestQuoteSchema = new Schema({
   product_details: {
     type: Object,
   },
-  delivery_type: {
+  delivery_mode: {
     type: String,
     required: [true, "Please Choose A Delivery Type"],
     enum: ["Sea", "Air"],
@@ -14,11 +14,19 @@ const RequestQuoteSchema = new Schema({
     required: [true, "Please Choose a Transportation way"],
     enum: ["FCL", "LCL", "Bulk", "SC", "ULDC"],
   },
-  weight: { type: Number },
-  volume: { type: Number },
-  byunits: { type: Boolean, default: false },
+  weight: { type: Number,
+    required: [true, "Please specify weight"],
+    default: 0 },
+  volume: { type: Number,
+    required: [true, "Please specify Volume"],
+    default: 0 },
+  by_units: { type: Boolean, default: false },
   dimensions: [],
-  container_type: { type: String },
+  container_type: {
+    type: String,
+    required: [true, "Please Choose a container type"],
+    enum: ["20' Standard","40' Standard","40' High-Cube","20' Refrigerated","40' Refrigerated","20' Open Top","40' Open Top","20' Flatrack","40' Flatrack","20' Tank","40' Flatrack Collapsible","20' Flatrack Collapsible","20' Platform","40' Platform","20' Bulk","45' High-Cube","10' Standard"],
+  },
   containers_quantity: { type: Number },
   location_from: {
     type: String,
@@ -36,12 +44,10 @@ const RequestQuoteSchema = new Schema({
   phone: {
     type: String,
     required: [true, "Please Enter Valid Phone Number"],
-    unique: true,
   },
   email: {
     type: String,
     required: [true, "Please Enter a Valid Email Address"],
-    unique: true,
   },
 });
 

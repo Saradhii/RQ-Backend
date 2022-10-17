@@ -5,11 +5,11 @@ const RQRoute = Router();
 RQRoute.post("/newrequest", (req, res) => {
   const {
     product_details,
-    delivery_type,
+    delivery_mode,
     transportation_by,
     weight,
     volume,
-    byunits,
+    by_units,
     dimensions,
     container_type,
     containers_quantity,
@@ -27,9 +27,9 @@ RQRoute.post("/newrequest", (req, res) => {
   if (byunits) {
     const newrq = new RQ({
       product_details,
-      delivery_type,
+      delivery_mode,
       transportation_by,
-      byunits,
+      by_units,
       dimensions,
       location_from,
       location_to,
@@ -54,7 +54,7 @@ RQRoute.post("/newrequest", (req, res) => {
   } else {
     const newrq = new RQ({
       product_details,
-      delivery_type,
+      delivery_mode,
       transportation_by,
       weight,
       volume,
