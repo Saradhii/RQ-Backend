@@ -88,7 +88,7 @@ RQRoute.get("/getall/sea", async (req, res) => {
 
   if (query) {
     const allrq = await RQ.find({
-      delivery_type: "Sea",
+      delivery_mode: "Sea",
       transportation_by: query,
     });
     if (allrq) {
@@ -110,7 +110,7 @@ RQRoute.get("/getall/air", async (req, res) => {
 
   if (query) {
     const allrq = await RQ.find({
-      delivery_type: "Air",
+      delivery_mode: "Air",
       transportation_by: query,
     });
     if (allrq) {
