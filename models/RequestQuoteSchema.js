@@ -25,7 +25,8 @@ const RequestQuoteSchema = new Schema({
   container_type: {
     type: String,
     required: [true, "Please Choose a container type"],
-    enum: ["20' Standard","40' Standard","40' High-Cube","20' Refrigerated","40' Refrigerated","20' Open Top","40' Open Top","20' Flatrack","40' Flatrack","20' Tank","40' Flatrack Collapsible","20' Flatrack Collapsible","20' Platform","40' Platform","20' Bulk","45' High-Cube","10' Standard"],
+    enum: ["20' Standard","40' Standard","40' High-Cube","20' Refrigerated","40' Refrigerated","20' Open Top","40' Open Top","20' Flatrack","40' Flatrack","20' Tank","40' Flatrack Collapsible","20' Flatrack Collapsible","20' Platform","40' Platform","20' Bulk","45' High-Cube","10' Standard","N/A"],
+    default:"N/A"
   },
   containers_quantity: { type: Number },
   location_from: {
