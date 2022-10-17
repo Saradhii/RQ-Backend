@@ -83,6 +83,50 @@ RQRoute.post("/newrequest", (req, res) => {
   }
 });
 
+RQRoute.get("/getall/sea", async (req, res) => {
+  const query = req.query.transportation_by;
+
+  if (query) {
+    const allrq = await RQ.find({
+      delivery_type: "Sea",
+      transportation_by: query,
+    });
+    if (allrq) {
+      return res.status(200).send(allrq);
+    } else {
+      return res.status(404).send({ Message: "No Data Found" });
+    }
+  }
+  const allrq = await RQ.find({ delivery_type: "Sea" });
+  if (allrq) {
+    return res.status(200).send(allrq);
+  } else {
+    return res.status(404).send({ Message: "No Data Found" });
+  }
+});
+
+RQRoute.get("/getall/air", async (req, res) => {
+  const query = req.query.transportation_by;
+
+  if (query) {
+    const allrq = await RQ.find({
+      delivery_type: "Air",
+      transportation_by: query,
+    });
+    if (allrq) {
+      return res.status(200).send(allrq);
+    } else {
+      return res.status(404).send({ Message: "No Data Found" });
+    }
+  }
+  const allrq = await RQ.find({ delivery_type: "Sea" });
+  if (allrq) {
+    return res.status(200).send(allrq);
+  } else {
+    return res.status(404).send({ Message: "No Data Found" });
+  }
+});
+
 RQRoute.get("/getall", async (req, res) => {
   const allrq = await RQ.find();
   if (allrq) {
