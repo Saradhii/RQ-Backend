@@ -24,7 +24,7 @@ RQRoute.post("/newrequest", (req, res) => {
     email,
   } = req.body;
 
-  if (byunits) {
+  if (by_units) {
     const newrq = new RQ({
       product_details,
       delivery_mode,
