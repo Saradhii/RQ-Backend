@@ -42,15 +42,12 @@ RQRoute.post("/newrequest", (req, res) => {
       email,
     });
 
-    newrq
-      .save()
-      .then(() => {
+    newrq.save().then(() => {
         res.send({
           status: 200,
           message: "Request Quote created successfully",
         });
-      })
-      .catch((err) => console.log(err));
+      }).catch((err) => console.log(err));
   } else {
     const newrq = new RQ({
       product_details,
