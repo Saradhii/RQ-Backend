@@ -50,7 +50,7 @@ const RequestQuoteSchema = new Schema({
     type: String,
     required: [true, "Please Enter a Valid Email Address"],
   },
-});
+}, { timestamps: true });
 
 const RQ = model("RequestQuotes", RequestQuoteSchema);
 
