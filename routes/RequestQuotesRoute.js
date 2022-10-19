@@ -91,7 +91,7 @@ RQRoute.post("/create", (req, res) => {
   }
 });
 
-RQRoute.get("/getall/sea", async (req, res) => {
+RQRoute.get("/fetchByMode/Sea", async (req, res) => {
   const query = req.query.transportation_by;
 
   if (query) {
@@ -105,17 +105,19 @@ RQRoute.get("/getall/sea", async (req, res) => {
       return res.status(404).send({ Message: "No Data Found" });
     }
   }
-  const allrq = await RQ.find({ delivery_type: "Sea" });
-  if (allrq) {
-    return res.status(200).send(allrq);
+  const getDetailsForOne = await RQ.find({delivery_mode: "Sea"});
+  if (getDetailsForOne <= 0) {
+    return res
+      .status(404)
+      .send({ message: "Data not found !" });
   } else {
-    return res.status(404).send({ Message: "No Data Found" });
+    return res.status(200).send(getDetailsForOne);
   }
 });
 
-RQRoute.get("/getall/air", async (req, res) => {
-  const query = req.query.transportation_by;
+RQRoute.get("/fetchByMode/air", async (req, res) => {
 
+  const query = req.query.transportation_by;
   if (query) {
     const allrq = await RQ.find({
       delivery_mode: "Air",
@@ -127,11 +129,13 @@ RQRoute.get("/getall/air", async (req, res) => {
       return res.status(404).send({ Message: "No Data Found" });
     }
   }
-  const allrq = await RQ.find({ delivery_type: "Sea" });
-  if (allrq) {
-    return res.status(200).send(allrq);
+  const getDetailsForOne = await RQ.find({delivery_mode: "Air"});
+  if (getDetailsForOne <= 0) {
+    return res
+      .status(404)
+      .send({ message: "Data not found !" });
   } else {
-    return res.status(404).send({ Message: "No Data Found" });
+    return res.status(200).send(getDetailsForOne);
   }
 });
 
@@ -151,17 +155,6 @@ RQRoute.post("/fetchByEmail", async (req, res) => {
     return res
       .status(404)
       .send({ message: "Can not find details for entered email" });
-  } else {
-    return res.status(200).send(getDetailsForOne);
-  }
-});
-
-RQRoute.post("/fetchByMode_Sea", async (req, res) => {
-  const getDetailsForOne = await RQ.find({delivery_type: "Sea"});
-  if (getDetailsForOne <= 0) {
-    return res
-      .status(404)
-      .send({ message: "Data not found !" });
   } else {
     return res.status(200).send(getDetailsForOne);
   }
