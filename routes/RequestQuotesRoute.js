@@ -151,7 +151,7 @@ RQRoute.get("/fetchAll", async (req, res) => {
 RQRoute.post("/fetchByEmail", async (req, res) => {
   const { email } = req.body;
   const getDetailsForOne = await RQ.find({ email: email });
-  if (getDetailsForOne <= 0) {
+  if (getDetailsForOne.length == 0) {
     return res
       .status(404)
       .send({ message: "Can not find details for entered email" });
