@@ -42,13 +42,21 @@ RQRoute.post("/newrequest", (req, res) => {
       email,
     });
 
-    newrq.save().then(() => {
-        res.send({
-          status: 200,
-          message: "Request Quote created successfully",
-        });
-      }).catch((err) => console.log(err));
+    newrq
+      .save((err,req)=>{
+        if(err)
+        {
+          return res.status(404).send({status: 404 , message: err.message})
+        }
+        else
+        {
+          return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
+        }
+
+      })
+      
   } else {
+    
     const newrq = new RQ({
       product_details,
       delivery_mode,
@@ -69,14 +77,17 @@ RQRoute.post("/newrequest", (req, res) => {
     });
 
     newrq
-      .save()
-      .then(() => {
-        res.send({
-          status: 200,
-          message: "Request Quote created successfully",
-        });
-      })
-      .catch((err) => console.log(err));
+    .save((err,req)=>{
+      if(err)
+      {
+        return res.status(404).send({status: 404 , message: err.message})
+      }
+      else
+      {
+        return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
+      }
+
+    });
   }
 });
 
@@ -133,10 +144,11 @@ RQRoute.get("/getall", async (req, res) => {
   }
 });
 
-RQRoute.get("/getone", async (req, res) => {
+RQRoute.post("/getone", async (req, res) => {
+  console.log(req.body);
   const { email } = req.body;
-
-  const getDetailsForOne = await RQ.findOne({ email: email });
+  console.log(email);
+  const getDetailsForOne = await RQ.find({ email: email });
   if (getDetailsForOne) {
     return res.status(200).send(getDetailsForOne);
   } else {
