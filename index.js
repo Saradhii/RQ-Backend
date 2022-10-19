@@ -14,8 +14,8 @@ app.use(
     origin: ["http://localhost:3000"],
   })
 );
-app.use("/requestquote", RequestQoutesRoute);
-app.use("/hsroute", FindHSRoute);
+app.use("/quote", RequestQoutesRoute);
+app.use("/search", FindHSRoute);
 app.use("/city",CityRoute);
 //testing
 app.get("/", (req, res) => {

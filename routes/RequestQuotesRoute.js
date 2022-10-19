@@ -2,7 +2,7 @@ const RQ = require("../models/RequestQuoteSchema");
 const Router = require("express");
 const RQRoute = Router();
 
-RQRoute.post("/newrequest", (req, res) => {
+RQRoute.post("/create", (req, res) => {
   const {
     product_details,
     delivery_mode,
@@ -135,7 +135,7 @@ RQRoute.get("/getall/air", async (req, res) => {
   }
 });
 
-RQRoute.get("/getall", async (req, res) => {
+RQRoute.get("/fetchAll", async (req, res) => {
   const allrq = await RQ.find();
   if (allrq) {
     return res.status(200).send(allrq);
@@ -144,17 +144,26 @@ RQRoute.get("/getall", async (req, res) => {
   }
 });
 
-RQRoute.post("/getone", async (req, res) => {
-  console.log(req.body);
+RQRoute.post("/fetchByEmail", async (req, res) => {
   const { email } = req.body;
-  console.log(email);
   const getDetailsForOne = await RQ.find({ email: email });
-  if (getDetailsForOne) {
-    return res.status(200).send(getDetailsForOne);
-  } else {
+  if (getDetailsForOne <= 0) {
     return res
       .status(404)
       .send({ message: "Can not find details for entered email" });
+  } else {
+    return res.status(200).send(getDetailsForOne);
+  }
+});
+
+RQRoute.post("/fetchByMode_Sea", async (req, res) => {
+  const getDetailsForOne = await RQ.find({delivery_type: "Sea"});
+  if (getDetailsForOne <= 0) {
+    return res
+      .status(404)
+      .send({ message: "Data not found !" });
+  } else {
+    return res.status(200).send(getDetailsForOne);
   }
 });
 

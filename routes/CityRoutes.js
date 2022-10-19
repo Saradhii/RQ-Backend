@@ -3,7 +3,7 @@ const Router = require("express");
 const CityRoute = Router();
 
 
-CityRoute.get("/findcity", async (req, res) => {
+CityRoute.get("/findCity", async (req, res) => {
 
   const { search } = req.query;
   const pr = await City.find({name: { $regex: `${search}`, $options: '$i' }}, {});
