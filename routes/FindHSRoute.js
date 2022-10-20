@@ -46,7 +46,7 @@ HSRoute.get("/GlobalSearch", async (req, res) => {
   const { search } = req.query;
   const pr = await RQ.find({ $text : { $search:  `${search}`}});
   if (pr <= 0) {
-    res.status(401).send("No Result");
+    res.status(404).send("No Result");
   }
    else {
     res.send(pr);
