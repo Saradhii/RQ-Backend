@@ -24,7 +24,7 @@ RQRoute.post("/create", (req, res) => {
     email,
   } = req.body;
 
-  if (delivery_mode=="Sea" || delivery_mode=="Air" && transportation_by=="FCL"||transportation_by=="ULDC") 
+  if (transportation_by=="FCL"||transportation_by=="ULDC") 
   {
     const newrq = new RQ({
       product_details,
@@ -56,7 +56,7 @@ RQRoute.post("/create", (req, res) => {
 
       })
       
-  } else if(delivery_mode=="Sea" || delivery_mode=="Air" && transportation_by=="LCL"||transportation_by=="SC") {
+  } else if(transportation_by=="LCL"||transportation_by=="SC") {
 
     if(by_units){
       const newrq = new RQ({
@@ -123,7 +123,7 @@ RQRoute.post("/create", (req, res) => {
 
     }
   }
-  else if(delivery_mode=="Sea" && transportation_by=="Bulk"){
+  else if(transportation_by=="Bulk"){
     const newrq = new RQ({
       product_details,
       delivery_mode,
