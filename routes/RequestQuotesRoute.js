@@ -24,13 +24,14 @@ RQRoute.post("/create", (req, res) => {
     email,
   } = req.body;
 
-  if (by_units) {
+  if (delivery_mode=="Sea" || delivery_mode=="Air" && transportation_by=="FCL"||transportation_by=="ULDC") 
+  {
     const newrq = new RQ({
       product_details,
       delivery_mode,
       transportation_by,
-      by_units,
-      dimensions,
+      container_type,
+      containers_quantity,
       location_from,
       location_to,
       ready_to_load,
@@ -55,16 +56,82 @@ RQRoute.post("/create", (req, res) => {
 
       })
       
-  } else {
-    
+  } else if(delivery_mode=="Sea" || delivery_mode=="Air" && transportation_by=="LCL"||transportation_by=="SC") {
+
+    if(by_units){
+      const newrq = new RQ({
+        product_details,
+        delivery_mode,
+        transportation_by,
+        by_units,
+        dimensions,
+        location_from,
+        location_to,
+        ready_to_load,
+        additional_infromation,
+        associated_services,
+        first_name,
+        last_name,
+        phone,
+        email,
+      });
+  
+      newrq
+        .save((err,req)=>{
+          if(err)
+          {
+            return res.status(404).send({status: 404 , message: err.message})
+          }
+          else
+          {
+            return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
+          }
+  
+        })
+
+    }else{
+
+      const newrq = new RQ({
+        product_details,
+        delivery_mode,
+        transportation_by,
+        weight,
+        volume,
+        location_from,
+        location_to,
+        ready_to_load,
+        additional_infromation,
+        associated_services,
+        first_name,
+        last_name,
+        phone,
+        email,
+      });
+  
+      newrq
+      .save((err,req)=>{
+        if(err)
+        {
+          return res.status(404).send({status: 404 , message: err.message})
+        }
+        else
+        {
+          return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
+        }
+  
+      });
+
+    }
+  }
+  else if(delivery_mode=="Sea" && transportation_by=="Bulk"){
     const newrq = new RQ({
       product_details,
       delivery_mode,
       transportation_by,
-      weight,
-      volume,
-      container_type,
-      containers_quantity,
+      ship_type,
+      gross_weight,
+      loading_rate,
+      discharging_rate,
       location_from,
       location_to,
       ready_to_load,
@@ -77,17 +144,18 @@ RQRoute.post("/create", (req, res) => {
     });
 
     newrq
-    .save((err,req)=>{
-      if(err)
-      {
-        return res.status(404).send({status: 404 , message: err.message})
-      }
-      else
-      {
-        return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
-      }
+      .save((err,req)=>{
+        if(err)
+        {
+          return res.status(404).send({status: 404 , message: err.message})
+        }
+        else
+        {
+          return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
+        }
 
-    });
+      })
+
   }
 });
 
