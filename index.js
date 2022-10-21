@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000","https://request-quote-intoglo.netlify.app","https://quote-from.vercel.app"],
+    origin: [],
   })
 );
 app.use("/quote", RequestQoutesRoute);
