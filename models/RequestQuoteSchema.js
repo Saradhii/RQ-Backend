@@ -26,7 +26,9 @@ const RequestQuoteSchema = new Schema(
       default: 0,
     },
     by_units: { type: Boolean, default: false },
-    dimensions: [],
+    dimensions: {
+      type: Object,
+    },
     container_type: {
       type: String,
       required: [true, "Please Choose a container type"],
