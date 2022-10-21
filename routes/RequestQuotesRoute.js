@@ -22,10 +22,15 @@ RQRoute.post("/create", (req, res) => {
     last_name,
     phone,
     email,
+    ship_type,
+    discharging_rate,
+    loading_rate,
+    gross_weight,
   } = req.body;
 
-  if (transportation_by=="FCL"||transportation_by=="ULDC") 
-  {
+  console.log(req.body);
+
+  if (transportation_by == "FCL" || transportation_by == "ULDC") {
     const newrq = new RQ({
       product_details,
       delivery_mode,
@@ -43,22 +48,17 @@ RQRoute.post("/create", (req, res) => {
       email,
     });
 
-    newrq
-      .save((err,req)=>{
-        if(err)
-        {
-          return res.status(404).send({status: 404 , message: err.message})
-        }
-        else
-        {
-          return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
-        }
-
-      })
-      
-  } else if(transportation_by=="LCL"||transportation_by=="SC") {
-
-    if(by_units){
+    newrq.save((err, req) => {
+      if (err) {
+        return res.status(404).send({ status: 404, message: err.message });
+      } else {
+        return res
+          .status(200)
+          .send({ status: 200, message: "Request Quote created successfully" });
+      }
+    });
+  } else if (transportation_by == "LCL" || transportation_by == "SC") {
+    if (by_units) {
       const newrq = new RQ({
         product_details,
         delivery_mode,
@@ -75,22 +75,18 @@ RQRoute.post("/create", (req, res) => {
         phone,
         email,
       });
-  
-      newrq
-        .save((err,req)=>{
-          if(err)
-          {
-            return res.status(404).send({status: 404 , message: err.message})
-          }
-          else
-          {
-            return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
-          }
-  
-        })
 
-    }else{
-
+      newrq.save((err, req) => {
+        if (err) {
+          return res.status(404).send({ status: 404, message: err.message });
+        } else {
+          return res.status(200).send({
+            status: 200,
+            message: "Request Quote created successfully By Units",
+          });
+        }
+      });
+    } else {
       const newrq = new RQ({
         product_details,
         delivery_mode,
@@ -107,23 +103,19 @@ RQRoute.post("/create", (req, res) => {
         phone,
         email,
       });
-  
-      newrq
-      .save((err,req)=>{
-        if(err)
-        {
-          return res.status(404).send({status: 404 , message: err.message})
-        }
-        else
-        {
-          return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
-        }
-  
-      });
 
+      newrq.save((err, req) => {
+        if (err) {
+          return res.status(404).send({ status: 404, message: err.message });
+        } else {
+          return res.status(200).send({
+            status: 200,
+            message: "Request Quote created successfully",
+          });
+        }
+      });
     }
-  }
-  else if(transportation_by=="Bulk"){
+  } else if (transportation_by == "Bulk") {
     const newrq = new RQ({
       product_details,
       delivery_mode,
@@ -143,19 +135,15 @@ RQRoute.post("/create", (req, res) => {
       email,
     });
 
-    newrq
-      .save((err,req)=>{
-        if(err)
-        {
-          return res.status(404).send({status: 404 , message: err.message})
-        }
-        else
-        {
-          return res.status(200).send({status : 200 ,  message: "Request Quote created successfully",})
-        }
-
-      })
-
+    newrq.save((err, req) => {
+      if (err) {
+        return res.status(404).send({ status: 404, message: err.message });
+      } else {
+        return res
+          .status(200)
+          .send({ status: 200, message: "Request Quote created successfully" });
+      }
+    });
   }
 });
 
@@ -173,29 +161,24 @@ RQRoute.get("/fetchByMode/Sea", async (req, res) => {
       return res.status(404).send({ Message: "No Data Found" });
     }
   }
-  const getDetailsForOne = await RQ.find({delivery_mode: "Sea"});
+  const getDetailsForOne = await RQ.find({ delivery_mode: "Sea" });
   if (getDetailsForOne <= 0) {
-    return res
-      .status(404)
-      .send({ message: "Data not found !" });
+    return res.status(404).send({ message: "Data not found !" });
   } else {
     return res.status(200).send(getDetailsForOne);
   }
 });
 
 RQRoute.get("/fetchByMode/LCL", async (req, res) => {
-  const getDetailsForOne = await RQ.find({transportation_by: "LCL"});
+  const getDetailsForOne = await RQ.find({ transportation_by: "LCL" });
   if (getDetailsForOne <= 0) {
-    return res
-      .status(404)
-      .send({ message: "Data not found !" });
+    return res.status(404).send({ message: "Data not found !" });
   } else {
     return res.status(200).send(getDetailsForOne);
   }
 });
 
 RQRoute.get("/fetchByMode/air", async (req, res) => {
-
   const query = req.query.transportation_by;
   if (query) {
     const allrq = await RQ.find({
@@ -208,11 +191,9 @@ RQRoute.get("/fetchByMode/air", async (req, res) => {
       return res.status(404).send({ Message: "No Data Found" });
     }
   }
-  const getDetailsForOne = await RQ.find({delivery_mode: "Air"});
+  const getDetailsForOne = await RQ.find({ delivery_mode: "Air" });
   if (getDetailsForOne <= 0) {
-    return res
-      .status(404)
-      .send({ message: "Data not found !" });
+    return res.status(404).send({ message: "Data not found !" });
   } else {
     return res.status(200).send(getDetailsForOne);
   }

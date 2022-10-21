@@ -26,9 +26,7 @@ const RequestQuoteSchema = new Schema(
       default: 0,
     },
     by_units: { type: Boolean, default: false },
-    dimensions: {
-      type: Object,
-    },
+    dimensions: { type: Object },
     container_type: {
       type: String,
       required: [true, "Please Choose a container type"],
@@ -54,39 +52,39 @@ const RequestQuoteSchema = new Schema(
       ],
       default: "N/A",
     },
-    ship_type:{
+    ship_type: {
       type: String,
       required: [true, "Please Choose a container type"],
       enum: [
-        "Bulk Carriers",
+        "Bulk Careers",
         "Containerships",
-        "General Cargo",
-        "Product tankers / Asphalt carriers",
-        "Product tankers / Chemical tankers",
-        "Product tankers / Crude carriers",
-        "Product tankers / Gas carriers",
-        "Specialized / Heavy-lift",
-        "Specialized / Livestock",
-        "Specialized / Refrigerated",
-        "Specialized / RoRo",
-        "Specialized / Wood chip",
+        "General cargo",
+        "Product tankers/Asphalt carriers",
+        "Product tankers/Chemical tankers",
+        "Product tankers/Crude carriers",
+        "Product tankers/Gas carriers",
+        "Specialized/Heavy-lift",
+        "Specialized/Livestock",
+        "Specialized/Refrigerated",
+        "Specialized/RoRo",
+        "Specialized/Wood chip",
         "N/A",
       ],
       default: "N/A",
     },
-    gross_weight:{
+    gross_weight: {
       type: Number,
       required: [true, "Please specify Gross weight"],
       default: 0,
     },
-    loading_rate:{
+    loading_rate: {
       type: Number,
-      required: [true, "Please specify Gross weight"],
+      required: [true, "Please specify loading rate"],
       default: 0,
     },
-    discharging_rate:{
+    discharging_rate: {
       type: Number,
-      required: [true, "Please specify Gross weight"],
+      required: [true, "Please specify discharging rate"],
       default: 0,
     },
     containers_quantity: { type: Number },
