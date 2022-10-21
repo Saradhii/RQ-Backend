@@ -115,6 +115,17 @@ RQRoute.get("/fetchByMode/Sea", async (req, res) => {
   }
 });
 
+RQRoute.get("/fetchByMode/LCL", async (req, res) => {
+  const getDetailsForOne = await RQ.find({transportation_by: "LCL"});
+  if (getDetailsForOne <= 0) {
+    return res
+      .status(404)
+      .send({ message: "Data not found !" });
+  } else {
+    return res.status(200).send(getDetailsForOne);
+  }
+});
+
 RQRoute.get("/fetchByMode/air", async (req, res) => {
 
   const query = req.query.transportation_by;
