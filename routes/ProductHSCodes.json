@@ -1,33 +1,4 @@
-[
-    {
-        "name":"Shirts",
-        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
-        "hscode":"6205.00.00.00",
-        "category":"Cotton",
-        "level":"IV"
-    },
-    {
-        "name":"Face Creame",
-        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
-        "hscode":"6205.00.00.00",
-        "category":"Cotton",
-        "level":"IV"
-    },
-    {
-        "name":"Mobiles",
-        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
-        "hscode":"6205.00.00.00",
-        "category":"Cotton",
-        "level":"IV"
-    },
-    {
-        "name":"Tires",
-        "discription":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
-        "hscode":"6205.00.00.00",
-        "category":"Cotton",
-        "level":"IV"
-    }
-]
+
 
 [
     {
@@ -79,4 +50,25 @@
     "parent": "Sulphuric acid",
     "level": "VI"
   },
+  {
+    "name":"Face Creame",
+    "description":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
+    "hscode":"6205.00.00.00",
+    "category":"Cotton",
+    "level":"IV"
+},
+{
+    "name":"Mobiles",
+    "description":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
+    "hscode":"6205.00.00.00",
+    "category":"Cotton",
+    "level":"IV"
+},
+{
+    "name":"Tires",
+    "description":"Shirts, men's or boys' (not knitted or crocheted),Shirts, men's or boys' (not knitted or crocheted)",
+    "hscode":"6205.00.00.00",
+    "category":"Cotton",
+    "level":"IV"
+}
 ]
