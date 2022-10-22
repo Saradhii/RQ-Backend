@@ -136,7 +136,7 @@ const RequestQuoteSchema = new Schema(
       required: [true, "Please specify discharging rate"],
       default: 0,
     },
-    containers_quantity: { type: Number },
+    containers_quantity: { type: Number, default: 0 },
     location_from: {
       type: String,
       required: [true, "Please Enter Starting Destination"],
