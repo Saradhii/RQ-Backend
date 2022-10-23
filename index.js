@@ -4,7 +4,7 @@ const cors = require("cors");
 const RequestQoutesRoute = require("./routes/RequestQuotesRoute");
 const FindHSRoute = require("./routes/FindHSRoute");
 const CityRoute = require("./routes/CityRoutes");
-// App creation
+
 const app = express();
 //Needed middlewares
 app.use(express.urlencoded({ extended: true }));
