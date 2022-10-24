@@ -163,7 +163,7 @@ RQRoute.get("/fetchByMode/Sea", async (req, res) => {
   }
   const getDetailsForOne = await RQ.find({ delivery_mode: "Sea" });
   if (getDetailsForOne <= 0) {
-    return res.status(404).send({ message: "Data not found !" });
+    return res.status(404).send({ message: "Data not found for given criteria , Try Again" });
   } else {
     return res.status(200).send(getDetailsForOne);
   }
@@ -172,7 +172,7 @@ RQRoute.get("/fetchByMode/Sea", async (req, res) => {
 RQRoute.get("/fetchByMode/LCL", async (req, res) => {
   const getDetailsForOne = await RQ.find({ transportation_by: "LCL" });
   if (getDetailsForOne <= 0) {
-    return res.status(404).send({ message: "Data not found !" });
+    return res.status(404).send({ message: "Data not found for given criteria , Try Again" });
   } else {
     return res.status(200).send(getDetailsForOne);
   }
@@ -181,7 +181,7 @@ RQRoute.get("/fetchByMode/LCL", async (req, res) => {
 RQRoute.get("/fetchByMode/FCL", async (req, res) => {
   const getDetailsForOne = await RQ.find({ transportation_by: "FCL" });
   if (getDetailsForOne <= 0) {
-    return res.status(404).send({ message: "Data not found !" });
+    return res.status(404).send({ message: "Data not found for given criteria , Try Again" });
   } else {
     return res.status(200).send(getDetailsForOne);
   }
