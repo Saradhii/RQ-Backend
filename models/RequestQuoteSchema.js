@@ -199,7 +199,7 @@ const RequestQuoteSchema = new Schema(
     associated_services: {
       insurance: { type: Boolean, default: false },
       inspection: { type: Boolean, default: false },
-      certifications: { type: Boolean, default: false },
+      certification: { type: Boolean, default: false },
       customs_clearance: { type: Boolean, default: false },
     },
     first_name: { type: String, required: [true, "Please Enter First Name"] },
