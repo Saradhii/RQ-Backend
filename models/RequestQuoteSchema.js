@@ -53,6 +53,7 @@ const RequestQuoteSchema = new Schema(
         isTrue: { type: Boolean },
       },
     },
+    incoterms: { type: String },
     delivery_mode: {
       type: String,
       required: [true, "Please Choose A Delivery Type"],
