@@ -194,8 +194,13 @@ const RequestQuoteSchema = new Schema(
       required: [true, "Please Enter Ending Destination"],
     },
     ready_to_load: { type: String },
-    additional_information: { type: String, default: "N/A"},
-    associated_services: { type: String },
+    additional_information: { type: String, default: "N/A" },
+    associated_services: {
+      insurance: { type: Boolean, default: false },
+      inspection: { type: Boolean, default: false },
+      certifications: { type: Boolean, default: false },
+      customs_clearance: { type: Boolean, default: false },
+    },
     first_name: { type: String, required: [true, "Please Enter First Name"] },
     last_name: { type: String, required: [true, "Please Enter Last Name"] },
     phone: {
