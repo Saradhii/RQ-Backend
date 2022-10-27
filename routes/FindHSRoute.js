@@ -1,4 +1,5 @@
 const HS = require("../models/HSCodesSchema");
+const NHS = require("../models/NewImports");
 const City = require("../models/CitySchema");
 const RQ = require("../models/RequestQuoteSchema");
 const Router = require("express");
@@ -21,6 +22,18 @@ HSRoute.get("/findHSCode", async (req, res) => {
 
   const { search } = req.query;
   const pr = await HS.find({name: { $regex: `${search}`, $options: '$i' }}, {});
+  if (pr <= 0) {
+    res.status(401).send("No Result");
+  }
+   else {
+    res.send(pr);
+  }
+});
+
+HSRoute.get("/findhs", async (req, res) => {
+
+  const { search } = req.query;
+  const pr = await NHS.find({HS6: { $regex: `${search}`, $options: '$i' }}, {});
   if (pr <= 0) {
     res.status(401).send("No Result");
   }
