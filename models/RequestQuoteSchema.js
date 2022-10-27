@@ -205,8 +205,11 @@ const RequestQuoteSchema = new Schema(
     first_name: { type: String, required: [true, "Please Enter First Name"] },
     last_name: { type: String, required: [true, "Please Enter Last Name"] },
     phone: {
-      type: String,
-      required: [true, "Please Enter Valid Phone Number"],
+      dialcode: { type: String },
+      number: {
+        type: String,
+        required: [true, "Please Enter Valid Phone Number"],
+      },
     },
     email: {
       type: String,
