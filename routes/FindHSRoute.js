@@ -33,7 +33,8 @@ HSRoute.get("/findHSCode", async (req, res) => {
 HSRoute.get("/findhs", async (req, res) => {
 
   const { search } = req.query;
-  const pr = await NHS.find({HS6: { $regex: `${search}`, $options: '$i' }}, {});
+  // console.log(search);
+  const pr = await NHS.find({HS6: { $regex: `^${search}`, $options: '$i'}}, {});
   if (pr <= 0) {
     res.status(401).send("No Result");
   }
