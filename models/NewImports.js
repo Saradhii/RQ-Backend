@@ -6,9 +6,9 @@ const NewImportsSchema = ({
   HS2_ID:String,
   HS2:String,
   HS4_ID:String,
-  HS4:String,
-  HS6_ID:String,
-  HS6:String,
+  name:String,
+  hscode:String,
+  discription:String,
   Trade_Value:String
 });
 
