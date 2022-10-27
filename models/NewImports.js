@@ -8,7 +8,7 @@ const NewImportsSchema = ({
   HS4_ID:String,
   name:String,
   hscode:String,
-  discription:String,
+  description:String,
   Trade_Value:String
 });
 
