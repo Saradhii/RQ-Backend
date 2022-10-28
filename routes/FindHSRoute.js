@@ -44,7 +44,7 @@ HSRoute.get("/findhs", async (req, res) => {
 
   const { search } = req.query;
   // console.log(search);
-  const pr = await NHS.find({description: { $regex: `^${search}`, $options: '$i'}}, {});
+  const pr = await NHS.find({description: { $regex: `${search}`, $options: '$i'}}, {});
   if (pr <= 0) {
     res.status(401).send("No Result");
   }
