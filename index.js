@@ -17,7 +17,13 @@ app.use(
 app.use("/quote", RequestQoutesRoute);
 app.use("/search", FindHSRoute);
 app.use("/city",CityRoute);
-//testing
+
+app.get('/search/:index', async (req, res) => {
+  const { phraseSearch } = require('./routes/SearchEngine');
+  const data = await phraseSearch(req.params.index, req.query.q);
+  res.json(data);
+});
+
 app.get("/", (req, res) => {
   res.send("Request Quote backend working....");
 });
