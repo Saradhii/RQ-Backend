@@ -11,15 +11,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000","https://request-quote-intoglo.netlify.app","https://intoglo.netlify.app","https://intoglo-page.netlify.app/requestquote","https://intoglo-page.netlify.app"],
+    origin: [
+      "http://localhost:3000",
+      "https://request-quote-intoglo.netlify.app",
+      "https://intoglo.netlify.app",
+      "https://intoglo-page.netlify.app/requestquote",
+      "https://intoglo-page.netlify.app",
+      "https://intoglo-eta.vercel.app/",
+    ],
   })
 );
 app.use("/quote", RequestQoutesRoute);
 app.use("/search", FindHSRoute);
-app.use("/city",CityRoute);
+app.use("/city", CityRoute);
 
-app.get('/search/:index', async (req, res) => {
-  const { phraseSearch } = require('./routes/SearchEngine');
+app.get("/search/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/SearchEngine");
   const data = await phraseSearch(req.params.index, req.query.q);
   res.json(data);
 });
