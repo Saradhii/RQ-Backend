@@ -21,6 +21,8 @@ app.use(cors());
 //       "https://intoglo-eta.vercel.app/requestquote",
 //     ],
 //   }
+
+
 app.use("/quote", RequestQoutesRoute);
 app.use("/search", FindHSRoute);
 app.use("/city", CityRoute);

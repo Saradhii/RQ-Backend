@@ -1,6 +1,6 @@
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({
-  node: "https://9a77-2401-4900-1c27-5b1b-106a-7224-f89a-d701.in.ngrok.io/",
+  node: "http://localhost:9200/",
   auth: {
     username: "elastic",
     password: "+cdPcJ40Hu4yivklTq8f",
