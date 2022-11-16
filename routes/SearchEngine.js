@@ -1,10 +1,14 @@
 const { Client } = require("@elastic/elasticsearch");
+// const client = new Client({
+//   node: "http://localhost:9200/",
+//   auth: {
+//     username: "elastic",
+//     password: "+cdPcJ40Hu4yivklTq8f",
+//   },
+// });
+
 const client = new Client({
-  node: "http://localhost:9200/",
-  auth: {
-    username: "elastic",
-    password: "+cdPcJ40Hu4yivklTq8f",
-  },
+  node: "http://54.178.33.146:9200/"
 });
 
 const phraseSearch = async (_index, phrase) => {
