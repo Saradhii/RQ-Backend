@@ -1,9 +1,16 @@
 const RQ = require("../models/RequestQuoteSchema");
+const Counter = require("../models/Counter");
 const Router = require("express");
 const RQRoute = Router();
 
-
-
+function getNextSequenceValue(sequenceName){
+  var sequenceDocument = Counter.findAndModify({
+     query:{_id: sequenceName },
+     update: {$inc:{sequence_value:1}},
+     new:true
+  });
+  return sequenceDocument.sequence_value;
+}
 
 RQRoute.post("/create", (req, res) => {
   var {
@@ -31,11 +38,13 @@ RQRoute.post("/create", (req, res) => {
     gross_weight,
     incoterms,
   } = req.body;
+  var id = getNextSequenceValue("productid");
 
   console.log(req.body);
 
   if (transportation_by == "FCL" || transportation_by == "ULDC") {
     var newrq = new RQ({
+      id,
       product_details,
       delivery_mode,
       transportation_by,
@@ -65,6 +74,7 @@ RQRoute.post("/create", (req, res) => {
   } else if (transportation_by == "LCL" || transportation_by == "SC") {
     if (by_units) {
       var newrq = new RQ({
+        id,
         product_details,
         delivery_mode,
         transportation_by,
@@ -94,6 +104,7 @@ RQRoute.post("/create", (req, res) => {
       });
     } else {
       var newrq = new RQ({
+        id,
         product_details,
         delivery_mode,
         transportation_by,
@@ -124,6 +135,7 @@ RQRoute.post("/create", (req, res) => {
     }
   } else if (transportation_by == "Bulk") {
     var newrq = new RQ({
+      id,
       product_details,
       delivery_mode,
       transportation_by,
