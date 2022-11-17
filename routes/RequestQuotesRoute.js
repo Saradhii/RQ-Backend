@@ -2,8 +2,12 @@ const RQ = require("../models/RequestQuoteSchema");
 const Router = require("express");
 const RQRoute = Router();
 
+
+var id=1;
+
 RQRoute.post("/create", (req, res) => {
   const {
+    id,
     product_details,
     delivery_mode,
     transportation_by,
@@ -33,6 +37,7 @@ RQRoute.post("/create", (req, res) => {
 
   if (transportation_by == "FCL" || transportation_by == "ULDC") {
     const newrq = new RQ({
+      id,
       product_details,
       delivery_mode,
       transportation_by,
@@ -57,11 +62,13 @@ RQRoute.post("/create", (req, res) => {
         return res
           .status(200)
           .send({ status: 200, message: "Request Quote created successfully" });
+          id++;
       }
     });
   } else if (transportation_by == "LCL" || transportation_by == "SC") {
     if (by_units) {
       const newrq = new RQ({
+        id,
         product_details,
         delivery_mode,
         transportation_by,
@@ -83,6 +90,7 @@ RQRoute.post("/create", (req, res) => {
         if (err) {
           return res.status(404).send({ status: 404, message: err.message });
         } else {
+          id++;
           return res.status(200).send({
             status: 200,
             message: "Request Quote created successfully By Units",
@@ -91,6 +99,7 @@ RQRoute.post("/create", (req, res) => {
       });
     } else {
       const newrq = new RQ({
+        id,
         product_details,
         delivery_mode,
         transportation_by,
@@ -112,6 +121,7 @@ RQRoute.post("/create", (req, res) => {
         if (err) {
           return res.status(404).send({ status: 404, message: err.message });
         } else {
+          id++;
           return res.status(200).send({
             status: 200,
             message: "Request Quote created successfully",
@@ -121,6 +131,7 @@ RQRoute.post("/create", (req, res) => {
     }
   } else if (transportation_by == "Bulk") {
     const newrq = new RQ({
+      id,
       product_details,
       delivery_mode,
       transportation_by,
@@ -144,6 +155,7 @@ RQRoute.post("/create", (req, res) => {
       if (err) {
         return res.status(404).send({ status: 404, message: err.message });
       } else {
+        id++;
         return res
           .status(200)
           .send({ status: 200, message: "Request Quote created successfully" });
