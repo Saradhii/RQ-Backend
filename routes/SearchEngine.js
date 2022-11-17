@@ -21,8 +21,8 @@ const phraseSearch = async (_index, phrase) => {
       query: {
         multi_match: {
           query: phrase,
-          fields: ["hs2", "name", "description"],
-          type: "phrase_prefix",
+          fields: ["description"],
+          type: "best_fields",
         },
       },
     })
