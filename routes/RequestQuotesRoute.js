@@ -4,7 +4,7 @@ const Router = require("express");
 const RQRoute = Router();
 
 function getNextSequenceValue(sequenceName){
-  var sequenceDocument = Counter.findAndModify({
+  var sequenceDocument = Counter.updateOne({
      query:{_id: sequenceName },
      update: {$inc:{sequence_value:1}},
      new:true
