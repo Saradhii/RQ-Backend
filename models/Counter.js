@@ -1,7 +1,7 @@
 const { Schema, model} = require("mongoose");
 
 const CounterSchema = ({
-    _id: String,
+    id: String,
     sequence_value: Number,
   });
 
