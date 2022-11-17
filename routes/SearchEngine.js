@@ -15,19 +15,38 @@ const phraseSearch = async (_index, phrase) => {
   const hits = [];
 
   // only string values are searchable
-  const searchResult = await client
+  if(phrase.includes(" "))
+  {
+    const searchResult = await client
     .search({
       index: _index,
       query: {
         multi_match: {
           query: phrase,
-          fields: ["description"],
+          fields: ["name","description"],
           type: "best_fields",
         },
       },
     })
     .catch((e) => console.log("errr", e));
   return searchResult;
+  }
+  else
+  {
+    const searchResult = await client
+    .search({
+      index: _index,
+      query: {
+        multi_match: {
+          query: phrase,
+          fields: ["name","description"],
+          type: "phrase_prefix",
+        },
+      },
+    })
+    .catch((e) => console.log("errr", e));
+  return searchResult;
+  }
 };
 
 module.exports = {
