@@ -27,6 +27,12 @@ app.use("/quote", RequestQoutesRoute);
 app.use("/search", FindHSRoute);
 app.use("/city", CityRoute);
 
+app.get("/searchcity/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/SearchCity");
+  const data = await phraseSearch(req.params.index, req.query.q);
+  res.json(data);
+});
+
 app.get("/search/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/SearchEngine");
   const data = await phraseSearch(req.params.index, req.query.q);
