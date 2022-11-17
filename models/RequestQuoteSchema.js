@@ -217,9 +217,6 @@ const RequestQuoteSchema = new Schema(
       type: String,
       required: [true, "Please Enter a Valid Email Address"],
     },
-    id: {
-      type: Number
-    }
   },
   { timestamps: true }
 );
