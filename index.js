@@ -34,6 +34,12 @@ app.get("/searchcity/:index", async (req, res) => {
   res.json(data);
 });
 
+app.get("/searchall/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/GetAllHs");
+  const data = await phraseSearch(req.params.index);
+  res.json(data);
+});
+
 app.get("/search/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/SearchEngine");
   const data = await phraseSearch(req.params.index, req.query.q);
