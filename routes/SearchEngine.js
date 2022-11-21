@@ -8,7 +8,7 @@ const { Client } = require("@elastic/elasticsearch");
 // });
 
 const client = new Client({
-  node: "http://54.178.33.146:9200/"
+  node: "http://54.178.33.146:9200/",
 });
 
 const phraseSearch = async (_index, phrase) => {
