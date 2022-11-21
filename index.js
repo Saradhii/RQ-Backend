@@ -5,6 +5,7 @@ const RequestQoutesRoute = require("./routes/RequestQuotesRoute");
 const FindHSRoute = require("./routes/FindHSRoute");
 const CityRoute = require("./routes/CityRoutes");
 
+
 const app = express();
 //Needed middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -21,9 +22,23 @@ app.use(cors());
 //       "https://intoglo-eta.vercel.app/requestquote",
 //     ],
 //   }
+
+
 app.use("/quote", RequestQoutesRoute);
 app.use("/search", FindHSRoute);
 app.use("/city", CityRoute);
+
+app.get("/searchcity/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/SearchCity");
+  const data = await phraseSearch(req.params.index, req.query.q);
+  res.json(data);
+});
+
+app.get("/searchall/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/GetAllHs");
+  const data = await phraseSearch(req.params.index);
+  res.json(data);
+});
 
 app.get("/search/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/SearchEngine");
