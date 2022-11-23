@@ -40,6 +40,13 @@ app.get("/searchall/:index", async (req, res) => {
   res.json(data);
 });
 
+app.get("/searchcategory/:index/:category", async (req, res) => {
+  console.log(req.params.index,req.params.category,req.query.q);
+  const { phraseSearch } = require("./routes/SearchCategoty");
+  const data = await phraseSearch(req.params.index,req.params.category,req.query.q);
+  res.json(data);
+});
+
 app.get("/search/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/SearchEngine");
   const data = await phraseSearch(req.params.index, req.query.q);
