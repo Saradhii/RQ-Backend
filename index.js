@@ -5,7 +5,6 @@ const RequestQoutesRoute = require("./routes/RequestQuotesRoute");
 const FindHSRoute = require("./routes/FindHSRoute");
 const CityRoute = require("./routes/CityRoutes");
 
-
 const app = express();
 //Needed middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -23,7 +22,6 @@ app.use(cors());
 //     ],
 //   }
 
-
 app.use("/quote", RequestQoutesRoute);
 app.use("/search", FindHSRoute);
 app.use("/city", CityRoute);
@@ -40,10 +38,14 @@ app.get("/searchall/:index", async (req, res) => {
   res.json(data);
 });
 
-app.get("/searchcategory/:index/:category", async (req, res) => {
-  console.log(req.params.index,req.params.category,req.query.q);
+app.get("/searchcategory/:index/", async (req, res) => {
+  // console.log(req.params.index, req.query.category);
   const { phraseSearch } = require("./routes/SearchCategoty");
-  const data = await phraseSearch(req.params.index,req.params.category,req.query.q);
+  const data = await phraseSearch(
+    req.params.index,
+    req.query.category,
+    req.query.q
+  );
   res.json(data);
 });
 
