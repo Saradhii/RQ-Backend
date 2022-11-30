@@ -25,11 +25,12 @@ const phraseSearch = async (_index, _category, phrase) => {
                 },
               },
               
-               { multi_match:
+               { fuzzy:
                  {
-                  query: words[0],
-                  type: "phrase_prefix",
-                  fields: ["name","description"]
+                  description:{
+                    value:words[0],
+                    fuzziness:"AUTO"
+                  }
                  }
               }, 
               
@@ -64,7 +65,7 @@ const phraseSearch = async (_index, _category, phrase) => {
                 },
   
                 {
-                  multi_match: {
+                  fuzzy: {
                     query: phrase,
                     type: "phrase_prefix",
                     fields: ["name", "description"],
@@ -89,19 +90,21 @@ const phraseSearch = async (_index, _category, phrase) => {
         {bool:
          { must:
            [ 
-             { multi_match:
+             { fuzzy:
                {
-                query: words[0],
-                type: "phrase_prefix",
-                fields: ["name","description"]
+                description:{
+                  value: words[0],
+                  fuzziness:"AUTO"
+                }
                }
             }, 
             
-            { multi_match: 
+            { fuzzy: 
               { 
-               query: words[1],
-               type: "phrase_prefix",
-               fields: ["name","description"]
+                description:{
+                  value: words[1],
+                  fuzziness:"AUTO"
+                }
               }
             },
             
@@ -143,7 +146,6 @@ const phraseSearch = async (_index, _category, phrase) => {
       .catch((e) => console.log("errr", e));
     return searchResult;
     }
-   
   }
    else {
     const searchResult = await client
