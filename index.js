@@ -50,8 +50,20 @@ app.get("/searchcategory/:index/", async (req, res) => {
   res.json(data);
 });
 
+app.get("/searchincountry/:index", async (req, res) => {
+   const { phraseSearch } = require("./routes/SearchInCountry");
+   const data = await phraseSearch(req.params.index, req.query.globalhs);
+   res.json(data);
+});
+
 app.get("/search/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/SearchEngine");
+  const data = await phraseSearch(req.params.index, req.query.q);
+  res.json(data);
+});
+
+app.get("/searchglobal/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/Globalhs");
   const data = await phraseSearch(req.params.index, req.query.q);
   res.json(data);
 });
