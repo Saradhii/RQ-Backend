@@ -1,7 +1,7 @@
 const { Client } = require("@elastic/elasticsearch");
 
 const client = new Client({
-  node: "http://54.178.33.146:9200/"
+  node: "http://54.178.33.146:9200/",
 });
 
 const phraseSearch = async (_index) => {
@@ -11,16 +11,14 @@ const phraseSearch = async (_index) => {
   const searchResult = await client
     .search({
       index: _index,
-      size:70000,
+      size: 7000,
       query: {
-         match_all:{}
-      }
+        match_all: {},
+      },
     })
     .catch((e) => console.log("errr", e));
   return searchResult;
 };
-
-
 
 module.exports = {
   phraseSearch,
