@@ -11,7 +11,7 @@ const phraseSearch = async (_index) => {
   const searchResult = await client
     .search({
       index: _index,
-      size:4544,
+      size:70000,
       query: {
          match_all:{}
       }
