@@ -51,8 +51,8 @@ app.get("/searchcategory/:index/", async (req, res) => {
 });
 
 app.get("/searchincountry/:index", async (req, res) => {
-  const { phraseSearch } = require("./routes/SearchInCountry");
-  const data = await phraseSearch(req.params.index, req.query.globalhs);
+  const { phraseSearch6 } = require("./routes/SearchInCountry");
+  const data = await phraseSearch6(req.params.index, req.query.q);
   res.json(data);
 });
 
@@ -64,21 +64,20 @@ app.get("/search/:index", async (req, res) => {
 
 app.get("/searchglobal/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/Globalhs");
+  const { phraseSearch6 } = require("./routes/SearchInCountry");
   const data = await phraseSearch(req.params.index, req.query.q);
-  // const arr = data.hits.hits;
-  // var india = [];
-  // var usa = [];
-  // for(var i=0;i<arr.length;i++)
-  // {
-  //   const itc = await phraseSearch("indianhs", arr[i]._source.hscode);
-  //   const hts = await phraseSearch("htshs",arr[i]._source.hscode);
-  //   india.push(itc);
-  //   usa.push(hts);
-  // }
-  const indian = await phraseSearch("indianhs", req.query.q);
-  const usa = await phraseSearch("htshs", req.query.q);
-  // res.json(data);
-  res.send({ data: data, indian: indian, usa: usa });
+  const arr = data.hits.hits;
+  for (var i = 0; i < arr.length; i++) {
+    let indianData = await phraseSearch6("indianhs", arr[i]._source.hscode);
+    let usaData = await phraseSearch6("htshs", arr[i]._source.hscode);
+    arr[i].indiaData = indianData.hits.hits;
+    arr[i].usaData = usaData.hits.hits;
+  }
+  // const indian = await phraseSearch("indianhs", req.query.q);
+  // const usa = await phraseSearch("htshs", req.query.q);
+  res.send(arr);
+  // // res.json(data);
+  // res.send({data: data, indian: indian, usa: usa});
 });
 
 app.get("/", (req, res) => {
