@@ -51,9 +51,9 @@ app.get("/searchcategory/:index/", async (req, res) => {
 });
 
 app.get("/searchincountry/:index", async (req, res) => {
-   const { phraseSearch } = require("./routes/SearchInCountry");
-   const data = await phraseSearch(req.params.index, req.query.globalhs);
-   res.json(data);
+  const { phraseSearch } = require("./routes/SearchInCountry");
+  const data = await phraseSearch(req.params.index, req.query.globalhs);
+  res.json(data);
 });
 
 app.get("/search/:index", async (req, res) => {
@@ -75,10 +75,10 @@ app.get("/searchglobal/:index", async (req, res) => {
   //   india.push(itc);
   //   usa.push(hts);
   // }
-  const india = await phraseSearch("indianhs", req.query.q);
+  const indian = await phraseSearch("indianhs", req.query.q);
   const usa = await phraseSearch("htshs", req.query.q);
   // res.json(data);
-  res.send({data: data, india: india, usa: usa});
+  res.send({ data: data, indian: indian, usa: usa });
 });
 
 app.get("/", (req, res) => {
