@@ -4,15 +4,8 @@ const client = new Client({
   node: "http://54.178.33.146:9200/",
 });
 
-const phraseSearch = async (_index, phrase) => {
-  console.log(phrase);
-
-  // only string values are searchable
+const phraseSearch6 = async (_index, phrase) => {
   if (_index == "htshs") {
-    if (phrase.length % 2 === 1) {
-      phrase = "0" + phrase;
-    }
-    console.log(phrase);
     var phrase = phrase.slice(0, 4) + "." + phrase.slice(4);
     const searchResult = await client
       .search({
@@ -45,5 +38,5 @@ const phraseSearch = async (_index, phrase) => {
 };
 
 module.exports = {
-  phraseSearch,
+  phraseSearch6,
 };
