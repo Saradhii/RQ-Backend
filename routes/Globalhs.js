@@ -19,7 +19,7 @@ const phraseSearch = async (_index, phrase) => {
                {
                 query: words[0],
                 type: "phrase_prefix",
-                fields: ["hscode","description"]
+                fields: ["hscode","description","htsno","itc_hscodes"]
                }
             }, 
             
@@ -27,7 +27,7 @@ const phraseSearch = async (_index, phrase) => {
               { 
                query: words[1],
                type: "phrase_prefix",
-               fields: ["hscode","description"]
+               fields: ["hscode","description","htsno","itc_hscodes"]
               }
             },
             
@@ -50,7 +50,7 @@ const phraseSearch = async (_index, phrase) => {
               multi_match : {
                 query: phrase,
                 type:       "phrase_prefix",
-                fields: ["hscode","description"],
+                fields: ["hscode","description","htsno","itc_hscodes"],
                 minimum_should_match: "50%" 
               }
             },

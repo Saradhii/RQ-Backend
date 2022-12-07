@@ -65,7 +65,20 @@ app.get("/search/:index", async (req, res) => {
 app.get("/searchglobal/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/Globalhs");
   const data = await phraseSearch(req.params.index, req.query.q);
-  res.json(data);
+  // const arr = data.hits.hits;
+  // var india = [];
+  // var usa = [];
+  // for(var i=0;i<arr.length;i++)
+  // {
+  //   const itc = await phraseSearch("indianhs", arr[i]._source.hscode);
+  //   const hts = await phraseSearch("htshs",arr[i]._source.hscode);
+  //   india.push(itc);
+  //   usa.push(hts);
+  // }
+  const india = await phraseSearch("indianhs", req.query.q);
+  const usa = await phraseSearch("htshs", req.query.q);
+  // res.json(data);
+  res.send({data: data, india: india, usa: usa});
 });
 
 app.get("/", (req, res) => {
