@@ -5,69 +5,66 @@ const client = new Client({
 });
 
 const phraseSearch = async (_index, phrase) => {
-
-  if(phrase.includes(" "))
-  {
+  if (phrase.includes(" ")) {
     const words = phrase.split(" ");
-    const searchResult = await client.search({
+    const searchResult = await client
+      .search({
         index: _index,
-        query:
-        {bool:
-         { must:
-           [ 
-             { multi_match:
-               {
-                query: words[0],
-                type: "phrase_prefix",
-                fields: ["hscode","description","htsno","itc_hscodes"]
-               }
-            }, 
-            
-            { multi_match: 
-              { 
-               query: words[1],
-               type: "phrase_prefix",
-               fields: ["hscode","description","htsno","itc_hscodes"]
-              }
-            },
-            
-          ]
-        }
-      }
+        size: 10000,
+        query: {
+          bool: {
+            must: [
+              {
+                multi_match: {
+                  query: words[0],
+                  type: "phrase_prefix",
+                  fields: ["hscode", "description", "htsno", "itc_hscodes"],
+                },
+              },
+
+              {
+                multi_match: {
+                  query: words[1],
+                  type: "phrase_prefix",
+                  fields: ["hscode", "description", "htsno", "itc_hscodes"],
+                },
+              },
+            ],
+          },
+        },
       })
       .catch((e) => console.log("errr", e));
-      return searchResult;
-      }
-     else
-    {
+    return searchResult;
+  } else {
     const searchResult = await client
-    .search({
-      index: _index,
-      query: {
-        dis_max: {
-          queries: [
-            {
-              multi_match : {
-                query: phrase,
-                type:       "phrase_prefix",
-                fields: ["hscode","description","htsno","itc_hscodes"],
-                minimum_should_match: "50%" 
-              }
-            },
-            {
-              fuzzy: {
-                description: {
-                  value: phrase,
-                  fuzziness:"AUTO"
+      .search({
+        index: _index,
+        size: 10000,
+        query: {
+          dis_max: {
+            queries: [
+              {
+                multi_match: {
+                  query: phrase,
+                  type: "phrase_prefix",
+                  fields: ["hscode", "description", "htsno", "itc_hscodes"],
+                  minimum_should_match: "50%",
                 },
-            }, 
-            }
-          ]
-        }
-      },
-    })
-    .catch((e) => console.log("errr", e));
-  return searchResult;
+              },
+              {
+                fuzzy: {
+                  description: {
+                    value: phrase,
+                    fuzziness: "AUTO",
+                  },
+                },
+              },
+            ],
+          },
+        },
+      })
+      .catch((e) => console.log("errr", e));
+    return searchResult;
   }
 };
 
