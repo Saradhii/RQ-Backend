@@ -4,14 +4,14 @@ const client = new Client({
   node: "http://54.178.33.146:9200/",
 });
 
-const phraseSearch = async (_index, phrase) => {
+const phraseSearch = async (_index, phrase, from) => {
   if (phrase.includes(" ")) {
     const words = phrase.split(" ");
     const searchResult = await client
       .search({
         index: _index,
-        size:10,
-        from:0,
+        size: 5,
+        from: from,
         query: {
           bool: {
             must: [
@@ -40,8 +40,8 @@ const phraseSearch = async (_index, phrase) => {
     const searchResult = await client
       .search({
         index: _index,
-        size: 10,
-        from:0,
+        size: 5,
+        from: from,
         query: {
           dis_max: {
             queries: [
