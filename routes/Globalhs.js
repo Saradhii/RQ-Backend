@@ -10,7 +10,8 @@ const phraseSearch = async (_index, phrase) => {
     const searchResult = await client
       .search({
         index: _index,
-        size: 10000,
+        size:10,
+        from:0,
         query: {
           bool: {
             must: [
@@ -39,7 +40,8 @@ const phraseSearch = async (_index, phrase) => {
     const searchResult = await client
       .search({
         index: _index,
-        size: 10000,
+        size: 10,
+        from:0,
         query: {
           dis_max: {
             queries: [

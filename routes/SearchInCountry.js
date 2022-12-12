@@ -6,7 +6,6 @@ const client = new Client({
 
 const phraseSearch6 = async (_index, phrase) => {
   if (_index == "htshs") {
-    console.log(phrase);
     var phrase = phrase.slice(0, 4) + "." + phrase.slice(4);
     const searchResult = await client
       .search({
