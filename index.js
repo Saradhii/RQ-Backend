@@ -62,6 +62,12 @@ app.get("/search/:index", async (req, res) => {
   res.json(data);
 });
 
+app.get("/searchglobalres/:index", async(req,res)=>{
+  const { phraseSearch } = require("./routes/Globalcount");
+  const data = await phraseSearch(req.params.index, req.query.q);
+  res.send(data);
+});
+
 app.get("/searchglobal/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/Globalhs");
   const { phraseSearch6 } = require("./routes/SearchInCountry");
