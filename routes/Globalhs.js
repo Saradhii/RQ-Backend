@@ -5,7 +5,9 @@ const client = new Client({
 });
 
 const phraseSearch = async (_index, phrase, from) => {
+  phrase = phrase.trim();
   if (phrase.includes(" ")) {
+    phrase = phrase.replace(/\s+/g, " ");
     const words = phrase.split(" ");
     const searchResult = await client
       .search({
