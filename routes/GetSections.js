@@ -11,7 +11,7 @@ const phraseSearch = async (_index) => {
     .search({
       index: _index,
       size: 7000,
-      _source: ["section","chapter"]
+      _source: ["section"]
     })
     .catch((e) => console.log("errr", e));
   return searchResult;
