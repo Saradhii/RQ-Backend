@@ -10,8 +10,24 @@ const phraseSearch = async (_index) => {
   const searchResult = await client
     .search({
       index: _index,
-      size: 7000,
-      _source: ["section"]
+      aggs:{
+        "section":{
+            terms:{
+                field:"section.keyword",
+                min_doc_count:1,
+                size:100
+            },
+            aggs:{
+                "section&chapters":{
+                    terms:{
+                        field:"chapter.keyword",
+                        min_doc_count:1,
+                        size:100
+                    },
+                }
+            }
+        }
+      }
     })
     .catch((e) => console.log("errr", e));
   return searchResult;
