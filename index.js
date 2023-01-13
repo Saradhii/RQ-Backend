@@ -45,7 +45,7 @@ app.get("/getSectionsChapters/:index", async (req, res) => {
 });
 
 
-app.get("/getsections/:index", async (req, res) => {
+app.get("/backend/getsections/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/GetSections");
   const data = await phraseSearch(req.params.index);
   res.json(data);
