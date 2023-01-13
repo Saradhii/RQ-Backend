@@ -38,6 +38,13 @@ app.get("/searchall/:index", async (req, res) => {
   res.json(data);
 });
 
+app.get("/getSectionsChapters/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/GetSections");
+  const data = await phraseSearch(req.params.index);
+  res.json(data);
+});
+
+
 app.get("/getsections/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/GetSections");
   const data = await phraseSearch(req.params.index);
@@ -93,7 +100,7 @@ app.get("/searchglobal/:index", async (req, res) => {
   // res.send({data: data, indian: indian, usa: usa});
 });
 
-app.get("/", (req, res) => {
+app.get("/backend", (req, res) => {
   res.send("Request Quote backend working....");
 });
 
