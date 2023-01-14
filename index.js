@@ -88,13 +88,13 @@ app.get("/search/:index", async (req, res) => {
   res.json(data);
 });
 
-app.get("/searchglobalres/:index", async(req,res)=>{
+app.get("/backend/searchglobalres/:index", async(req,res)=>{
   const { phraseSearch } = require("./routes/Globalcount");
   const data = await phraseSearch(req.params.index, req.query.q);
   res.send(data);
 });
 
-app.get("/searchglobal/:index", async (req, res) => {
+app.get("/backend/searchglobal/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/Globalhs");
   const { phraseSearch6 } = require("./routes/SearchInCountry");
   const data = await phraseSearch(req.params.index, req.query.q, req.query.n);
@@ -111,6 +111,26 @@ app.get("/searchglobal/:index", async (req, res) => {
   // // res.json(data);
   // res.send({data: data, indian: indian, usa: usa});
 });
+
+app.get("/backend/searchglobalhs/:index", async (req, res) => {
+  // const { phraseSearch } = require("./routes/Globalhs");
+  // const { phraseSearch6 } = require("./routes/SearchInCountry");
+  // const data = await phraseSearch(req.params.index, req.query.q, req.query.n);
+  // const arr = data.hits.hits;
+  // for (var i = 0; i < arr.length; i++) {
+  //   let indianData = await phraseSearch6("indianhs", arr[i]._source.hscode);
+  //   let usaData = await phraseSearch6("htshs", arr[i]._source.hscode);
+  //   arr[i].indiaData = indianData?.hits?.hits;
+  //   arr[i].usaData = usaData?.hits?.hits;
+  // }
+  // const indian = await phraseSearch("indianhs", req.query.q);
+  // const usa = await phraseSearch("htshs", req.query.q);
+  // res.send(arr);
+  // // res.json(data);
+  // res.send({data: data, indian: indian, usa: usa});
+});
+
+
 
 app.get("/backend", (req, res) => {
   res.send("Request Quote backend working....");
