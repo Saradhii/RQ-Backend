@@ -54,7 +54,19 @@ app.get("/backend/getsections/:index", async (req, res) => {
 app.get("/backend/getheadings/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/GetHeadings");
   const data = await phraseSearch(req.params.index,req.query.q);
-  res.json(data.hits.hits);
+  let new_data = data.hits.hits;
+  let newArray = [];
+  let uniqueObject = {};
+  for (let i in new_data) 
+  {
+     objTitle = new_data[i]._source.heading_no;
+     uniqueObject[objTitle] = new_data[i];
+  }
+  for (i in uniqueObject) 
+  {
+    newArray.push(uniqueObject[i]);
+  }
+  res.json(newArray);
 });
 
 app.get("/backend/getsubheadings/:index", async (req, res) => {
@@ -112,22 +124,16 @@ app.get("/backend/searchglobal/:index", async (req, res) => {
   // res.send({data: data, indian: indian, usa: usa});
 });
 
-app.get("/backend/searchglobalhs/:index", async (req, res) => {
-  // const { phraseSearch } = require("./routes/Globalhs");
-  // const { phraseSearch6 } = require("./routes/SearchInCountry");
-  // const data = await phraseSearch(req.params.index, req.query.q, req.query.n);
-  // const arr = data.hits.hits;
-  // for (var i = 0; i < arr.length; i++) {
-  //   let indianData = await phraseSearch6("indianhs", arr[i]._source.hscode);
-  //   let usaData = await phraseSearch6("htshs", arr[i]._source.hscode);
-  //   arr[i].indiaData = indianData?.hits?.hits;
-  //   arr[i].usaData = usaData?.hits?.hits;
-  // }
-  // const indian = await phraseSearch("indianhs", req.query.q);
-  // const usa = await phraseSearch("htshs", req.query.q);
-  // res.send(arr);
-  // // res.json(data);
-  // res.send({data: data, indian: indian, usa: usa});
+app.get("/backend/searchhscountry/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/Globalhs");
+  const { phraseSearch6 } = require("./routes/SearchCountryhs");
+  const data = await phraseSearch(req.params.index, req.query.q, req.query.n);
+  const arr = data.hits.hits;
+  for (var i = 0; i < arr.length; i++) {
+    let countrydata = await phraseSearch6(req.query.c, arr[i]._source.hscode);
+    arr[i].countrydata = countrydata?.hits?.hits;
+  }
+  res.send(arr);
 });
 
 
