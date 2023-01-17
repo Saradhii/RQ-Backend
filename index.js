@@ -51,6 +51,7 @@ app.get("/backend/getsections/:index", async (req, res) => {
   res.json(data);
 });
 
+
 app.get("/backend/getheadings/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/GetHeadings");
   const data = await phraseSearch(req.params.index,req.query.q);
@@ -68,6 +69,14 @@ app.get("/backend/getheadings/:index", async (req, res) => {
   }
   res.json(newArray);
 });
+
+app.get("/backend/getsection/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/GetSection");
+  const data = await phraseSearch(req.params.index,req.query.q);
+  res.json(data);
+});
+
+
 
 app.get("/backend/getsubheadings/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/GetSubHeadings");
