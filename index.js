@@ -77,8 +77,9 @@ app.get("/backend/getsection/:index", async (req, res) => {
 });
 
 app.get("/backend/gethscode/:index", async (req, res) => {
-  const { phraseSearch } = require("./routes/GetSection");
-  const data = await phraseSearch(req.params.index,req.query.q);
+  console.log(req.params.index,req.query.q);
+  const { phraseSearch6 } = require("./routes/SearchInCountry");
+  const data = await phraseSearch6(req.params.index,req.query.q);
   res.json(data);
 });
 
