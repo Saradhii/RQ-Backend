@@ -174,12 +174,8 @@ RQRoute.post("/create", async(req, res) => {
             }
           });
         }
-
-
-
       }
     );
-    
 });
 
 RQRoute.get("/fetchByMode/Sea", async (req, res) => {
