@@ -6,17 +6,19 @@ const client = new Client({
 
 const phraseSearch = async (_index,phrase) => {
 
+   console.log(_index,phrase);
   // only string values are searchable
   const searchResult = await client
     .search({
       index: _index,
       size: 7000,
       query: {
-        match_phrase: {
-            heading_no: {
-              query: phrase
-            }
-          }
+        multi_match:
+        {
+         query: phrase,
+         type: "phrase_prefix",
+         fields: ["heading_no","hscode",]
+        }
       },
     })
     .catch((e) => console.log("errr", e));
