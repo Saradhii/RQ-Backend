@@ -5,9 +5,9 @@ const client = new Client({
 });
 
 const phraseSearch = async (_index,phrase) => {
-
-   console.log(_index,phrase);
-  // only string values are searchable
+ if(phrase.includes("."))
+ {
+  phrase.replace('.', '');
   const searchResult = await client
     .search({
       index: _index,
@@ -23,6 +23,25 @@ const phraseSearch = async (_index,phrase) => {
     })
     .catch((e) => console.log("errr", e));
   return searchResult;
+ }
+ else
+ {
+  const searchResult = await client
+    .search({
+      index: _index,
+      size: 7000,
+      query: {
+        multi_match:
+        {
+         query: phrase,
+         type: "phrase_prefix",
+         fields: ["heading_no","hscode",]
+        }
+      },
+    })
+    .catch((e) => console.log("errr", e));
+  return searchResult;
+ }
 };
 
 module.exports = {
