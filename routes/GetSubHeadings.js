@@ -7,7 +7,9 @@ const client = new Client({
 const phraseSearch = async (_index,phrase) => {
  if(phrase.includes("."))
  {
-  phrase.replace('.', '');
+  var str = phrase.replace('.','');
+  console.log(str);
+  console.log("phrase",phrase);
   const searchResult = await client
     .search({
       index: _index,
@@ -15,7 +17,7 @@ const phraseSearch = async (_index,phrase) => {
       query: {
         multi_match:
         {
-         query: phrase,
+         query: str,
          type: "phrase_prefix",
          fields: ["heading_no","hscode",]
         }
