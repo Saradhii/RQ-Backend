@@ -3,7 +3,6 @@ const Router = require("express");
 const CityRoute = Router();
 
 
-
 CityRoute.get("/findCity", async (req, res) => {
 
   const { search } = req.query;
