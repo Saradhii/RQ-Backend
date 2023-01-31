@@ -7,15 +7,15 @@
 {"index":{}}
 {"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0101","heading":"Horses, asses, mules and hinnies; live","hscode":"010190","description":"Mules and hinnies; live"}
 {"index":{}}
-{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals; live","hscode":"010221","description":"Cattle; live, pure-bred breeding animals"}
+{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals live","hscode":"010221","description":"Cattle; live, pure-bred breeding animals"}
 {"index":{}}
-{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals; live","hscode":"010229","description":"Cattle; live, other than pure-bred breeding animals"}
+{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals live","hscode":"010229","description":"Cattle; live, other than pure-bred breeding animals"}
 {"index":{}}
-{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals; live","hscode":"010231","description":"Buffalo; live, pure-bred breeding animals"}
+{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals live","hscode":"010231","description":"Buffalo; live, pure-bred breeding animals"}
 {"index":{}}
-{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals; live","hscode":"010239","description":"Buffalo; live, other than pure-bred breeding animals"}
+{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals live","hscode":"010239","description":"Buffalo; live, other than pure-bred breeding animals"}
 {"index":{}}
-{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals; live","hscode":"010290","description":"Bovine animals; live, other than cattle and buffalo"}
+{"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0102","heading":"Bovine animals live","hscode":"010290","description":"Bovine animals live, other than cattle and buffalo"}
 {"index":{}}
 {"section_level":"I","section_no":"01-05","section":"Animal & Animal Products","chapter_no":"01","chapter":"Live animals","heading_no":"0103","heading":"Swine; live","hscode":"010310","description":"Swine; live, pure-bred breeding animals"}
 {"index":{}}
