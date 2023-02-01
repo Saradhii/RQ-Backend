@@ -3311,6 +3311,8 @@
 {"index":{}}
 {"chapter":"15","itc_hscode":"152200","description":"DEGRAS ; RESIDUES RESLTNG FRM THE TREATMNTOF FATTY SUBSTNCS OR ANM/VEG WAXES","unit":"N/A"}
 {"index":{}}
+{"chapter":"16","itc_hscode":"160100","description":"Sausages and similar products, of meat, meat offal, blood or insects; food preparations based on these products","unit":"N/A"}
+{"index":{}}
 {"chapter":"16","itc_hscode":"160210","description":"HOMOGENISED PREPARATIONS","unit":"N/A"}
 {"index":{}}
 {"chapter":"16","itc_hscode":"160220","description":"PRPD/PRSVD LIVER OF ANY ANIMAL","unit":"N/A"}
@@ -14030,6 +14032,8 @@
 {"chapter":"15","itc_hscode":"15220020","description":"SOAP STOCKS","unit":"KGS"}
 {"index":{}}
 {"chapter":"15","itc_hscode":"15220090","description":"OTHER RESEDUES FRM THE TRTMNT OF FATTY SUBSTNCS OR ANML OR VEG WAXES","unit":"KGS"}
+{"index":{}}
+{"chapter":"16","itc_hscode":"16010000","description":"SAUSAGES AND SIMILAR PRODUCTS, OF MEAT, MEAT OFFAL OR BLOOD; FOOD PREPARATIONS BASED ON THESE PRODUCTS","unit":"N/A"}
 {"index":{}}
 {"chapter":"16","itc_hscode":"16021000","description":"HOMOGENISED PREPARATIONS","unit":"KGS"}
 {"index":{}}

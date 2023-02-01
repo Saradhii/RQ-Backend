@@ -51,6 +51,18 @@ app.get("/backend/getsections/:index", async (req, res) => {
   res.json(data);
 });
 
+app.get("/backend/getheadingsindia/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/GetHeadingsIndia");
+  const data = await phraseSearch(req.params.index,req.query.q);
+  let new_data = data.hits.hits;
+  var newArray = new_data.filter(function (el)
+  {
+    return el._source.itc_hscode.length == 4;
+  }
+  );
+  res.send(newArray);
+});
+
 
 app.get("/backend/getheadings/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/GetHeadings");
