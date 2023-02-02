@@ -54,13 +54,13 @@ app.get("/backend/getsections/:index", async (req, res) => {
 app.get("/backend/getheadingsindia/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/GetHeadingsIndia");
   const data = await phraseSearch(req.params.index,req.query.q);
-  let new_data = data.hits.hits;
-  var newArray = new_data.filter(function (el)
-  {
-    return el._source.itc_hscode.length == 4;
-  }
-  );
-  res.send(newArray);
+  // let new_data = data.hits.hits;
+  // var newArray = new_data.filter(function (el)
+  // {
+  //   return el._source.itc_hscode.length == 4;
+  // }
+  // );
+  res.send(data);
 });
 
 
