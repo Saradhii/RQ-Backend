@@ -39,7 +39,7 @@ const phraseSearch = async (_index, phrase, from) => {
       .catch((e) => console.log("errr", e));
     return searchResult;
   } else {
-    if(!isNaN(phrase))
+    if(!isNaN(phrase) && (phrase.length<=10))
     {
       phrase = phrase.slice(0,5);
     }

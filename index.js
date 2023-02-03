@@ -132,22 +132,58 @@ app.get("/backend/searchglobalres/:index", async(req,res)=>{
   res.send(data);
 });
 
-app.get("/backend/searchindianhs/:index", async (req, res) => {
-  console.log(req.params.index, req.query.q, req.query.n);
-  const { phraseSearch } = require("./routes/Globalhs");
-  // const { phraseSearch6 } = require("./routes/SearchInCountry");
-  const data = await phraseSearch(req.params.index, req.query.q, req.query.n);
+app.get("/backend/searchcountryhs/:index", async (req, res) => {
+  if(isNaN(req.query.q) == false)
+  { 
+    const { phraseSearch_c } = require("./routes/HSCodeSearchForCountry");
+    const { phraseSearch } = require("./routes/Globalhs");
+    const data = await phraseSearch_c(req.params.index, req.query.q);
+    const arr = data?.hits?.hits;
+    for (var i = 0; i < arr.length; i++) {
+      if(req.params.index == "indianhs")
+      {
+        let globalData= await phraseSearch("globalhs", req.query.q);
+        arr[i].globalData = globalData?.hits?.hits;
+      }
+      else if(req.params.index == "htshs")
+      {
+        let globalData= await phraseSearch("globalhs", req.query.q);
+        arr[i].globalData = globalData?.hits?.hits;
+      }
+    }
+    res.send(arr); 
+  }
+  else if(isNaN(req.query.q) == true){
+    const { phraseSearch } = require("./routes/Globalhs");
+    const { phraseSearch6 } = require("./routes/SearchInCountry");
+    const data = await phraseSearch("globalhs", req.query.q, req.query.n);
+    const arr = data?.hits?.hits;
+    for (var i = 0; i < arr.length; i++) {
+      let countryData= await phraseSearch6(req.params.index, arr[i]._source.hscode);
+      arr[i].countryData = countryData?.hits?.hits;
+    }
+    res.send(arr);
+  }
+  // console.log(req.params.index, req.query.q, req.query.n);
+  // const { phraseSearch_c } = require("./routes/HSCodeSearchForCountry");
+  // const { phraseSearch } = require("./routes/Globalhs");
+  // const data = await phraseSearch_c(req.params.index, req.query.q, req.query.n);
   // const arr = data?.hits?.hits;
+  // console.log(arr.length);
   // for (var i = 0; i < arr.length; i++) {
-  //   let indianData = await phraseSearch6("indianhs", arr[i]._source.hscode);
-  //   let usaData = await phraseSearch6("htshs", arr[i]._source.hscode);
-  //   arr[i].indiaData = indianData?.hits?.hits;
-  //   arr[i].usaData = usaData?.hits?.hits;
-  // }
+  //   if(req.params.index === "indianhs"){
+  //     let global = await phraseSearch("globalhs", arr[i]._source.itc_hscode);
+  //     arr[i].global = global?.hits?.hits;
+  //   }
+  //   else if(req.params.index === "htshs"){
+  //     let global = await phraseSearch("globalhs", arr[i]._source.htsno);
+  //     arr[i].global = global?.hits?.hits;
+  //   }
+  //}
   // const indian = await phraseSearch("indianhs", req.query.q);
   // const usa = await phraseSearch("htshs", req.query.q);
   // res.send(arr);
-  res.json(data);
+  // res.json(arr);
   // res.send({data: data, indian: indian, usa: usa});
 });
 
