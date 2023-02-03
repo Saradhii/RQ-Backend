@@ -164,27 +164,7 @@ app.get("/backend/searchcountryhs/:index", async (req, res) => {
     }
     res.send(arr);
   }
-  // console.log(req.params.index, req.query.q, req.query.n);
-  // const { phraseSearch_c } = require("./routes/HSCodeSearchForCountry");
-  // const { phraseSearch } = require("./routes/Globalhs");
-  // const data = await phraseSearch_c(req.params.index, req.query.q, req.query.n);
-  // const arr = data?.hits?.hits;
-  // console.log(arr.length);
-  // for (var i = 0; i < arr.length; i++) {
-  //   if(req.params.index === "indianhs"){
-  //     let global = await phraseSearch("globalhs", arr[i]._source.itc_hscode);
-  //     arr[i].global = global?.hits?.hits;
-  //   }
-  //   else if(req.params.index === "htshs"){
-  //     let global = await phraseSearch("globalhs", arr[i]._source.htsno);
-  //     arr[i].global = global?.hits?.hits;
-  //   }
-  //}
-  // const indian = await phraseSearch("indianhs", req.query.q);
-  // const usa = await phraseSearch("htshs", req.query.q);
-  // res.send(arr);
-  // res.json(arr);
-  // res.send({data: data, indian: indian, usa: usa});
+
 });
 
 
