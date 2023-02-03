@@ -39,6 +39,10 @@ const phraseSearch = async (_index, phrase, from) => {
       .catch((e) => console.log("errr", e));
     return searchResult;
   } else {
+    if(!isNaN(phrase))
+    {
+      phrase = phrase.slice(0,5);
+    }
     const searchResult = await client
       .search({
         index: _index,
