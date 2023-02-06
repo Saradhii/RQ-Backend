@@ -12,7 +12,7 @@ const phraseSearch_c = async (_index, phrase) => {
     .search({
       index: _index,
       query: {
-          match: {
+          match_phrase_prefix: {
             itc_hscode: {
               query: phrase
             }
@@ -43,7 +43,7 @@ const phraseSearch_c = async (_index, phrase) => {
     .search({
       index: _index,
       query: {
-          match: {
+          match_phrase_prefix: {
             htsno: {
               query: phrase
             }
