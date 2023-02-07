@@ -8,6 +8,7 @@ const phraseSearchhs = async (_index, phrase, from) => {
   phrase = phrase.trim();
   if (phrase.includes(" ")) {
     phrase = phrase.replace(/\s+/g, " ");
+    phrase = phrase.replace(/[^a-zA-Z0-9 ]/g, "");
     const words = phrase.split(" ");
     const searchResult = await client
       .search({
@@ -39,6 +40,7 @@ const phraseSearchhs = async (_index, phrase, from) => {
       .catch((e) => console.log("errr", e));
     return searchResult;
   } else {
+    phrase = phrase.replace(/[^a-zA-Z0-9 ]/g, "");
     if(_index=="htshs" && !isNaN(phrase))
     {
         if(!phrase.includes("."))
@@ -58,10 +60,6 @@ const phraseSearchhs = async (_index, phrase, from) => {
             phrase = phrase.slice(0, 10) + '.' + phrase.slice(10); 
         }
         }
-    }
-    else if(phrase.includes("."))
-    {
-        phrase = phrase;
     }
     console.log(phrase);
     const searchResult = await client
