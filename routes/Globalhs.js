@@ -44,7 +44,7 @@ const phraseSearch = async (_index, phrase, from) => {
     {
       phrase = phrase.slice(0,5);
     }
-    console.log(phrase);
+    // console.log(phrase);
     const searchResult = await client
       .search({
         index: _index,
