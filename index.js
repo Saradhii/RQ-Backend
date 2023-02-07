@@ -143,7 +143,7 @@ app.get("/backend/searchcountryhscode/:index", async(req,res)=>{
     if(req.params.index=="indianhs")
     {
       let globalData= await phraseSearch("globalhs", arr[i]._source.itc_hscode);
-      arr[i].globalData = globalData?.hits?.hits;
+      arr[i].globalData = globalData?.hits?.hits[0];
     }
     else if (req.params.index=="htshs")
     {
@@ -152,7 +152,7 @@ app.get("/backend/searchcountryhscode/:index", async(req,res)=>{
       txt = txt.replace('.','');
       txt = txt.replace('.','');
       let globalData= await phraseSearch("globalhs", txt);
-      arr[i].globalData = globalData?.hits?.hits;
+      arr[i].globalData = globalData?.hits?.hits[0];
     }
   }
   res.send(arr);
