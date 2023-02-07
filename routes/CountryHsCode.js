@@ -4,7 +4,7 @@ const client = new Client({
   node: "http://54.178.33.146:9200/",
 });
 
-const phraseSearch = async (_index, phrase, from) => {
+const phraseSearchhs = async (_index, phrase, from) => {
   phrase = phrase.trim();
   if (phrase.includes(" ")) {
     phrase = phrase.replace(/\s+/g, " ");
@@ -39,10 +39,29 @@ const phraseSearch = async (_index, phrase, from) => {
       .catch((e) => console.log("errr", e));
     return searchResult;
   } else {
-    
-    if(!isNaN(phrase) && (phrase.length<=10))
+    if(_index=="htshs" && !isNaN(phrase))
     {
-      phrase = phrase.slice(0,5);
+        if(!phrase.includes("."))
+        {
+            if(phrase.length<=6)
+        {
+            phrase= phrase.slice(0, 4) + '.' + phrase.slice(4);  
+        }
+        else if(phrase.length<=8)
+        {
+            phrase= phrase.slice(0, 4) + '.' + phrase.slice(4);
+            phrase = phrase.slice(0, 7) + '.' + phrase.slice(7);
+        }
+        else{
+            phrase= phrase.slice(0, 4) + '.' + phrase.slice(4);
+            phrase = phrase.slice(0, 7) + '.' + phrase.slice(7);
+            phrase = phrase.slice(0, 10) + '.' + phrase.slice(10); 
+        }
+        }
+    }
+    else if(phrase.includes("."))
+    {
+        phrase = phrase;
     }
     console.log(phrase);
     const searchResult = await client
@@ -75,9 +94,10 @@ const phraseSearch = async (_index, phrase, from) => {
       })
       .catch((e) => console.log("errr", e));
     return searchResult;
+    
   }
 };
 
 module.exports = {
-  phraseSearch,
+  phraseSearchhs,
 };

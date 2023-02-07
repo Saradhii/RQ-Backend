@@ -132,6 +132,32 @@ app.get("/backend/searchglobalres/:index", async(req,res)=>{
   res.send(data);
 });
 
+app.get("/backend/searchcountryhscode/:index", async(req,res)=>{
+  // console.log(req.params.index,req.query.q,req.query.n);
+  const {phraseSearchhs} = require("./routes/CountryHsCode");
+  const { phraseSearch } = require("./routes/Globalhs");
+  const data = await phraseSearchhs(req.params.index,req.query.q,req.query.n);
+  const arr = data?.hits?.hits;
+  for(var i=0;i<arr.length;i++)
+  {
+    if(req.params.index=="indianhs")
+    {
+      let globalData= await phraseSearch("globalhs", arr[i]._source.itc_hscode);
+      arr[i].globalData = globalData?.hits?.hits;
+    }
+    else if (req.params.index=="htshs")
+    {
+      var txt = arr[i]._source.htsno;
+      txt = txt.replace('.','');
+      txt = txt.replace('.','');
+      txt = txt.replace('.','');
+      let globalData= await phraseSearch("globalhs", txt);
+      arr[i].globalData = globalData?.hits?.hits;
+    }
+  }
+  res.send(data);
+});
+
 app.get("/backend/searchcountryhs/:index", async (req, res) => {
   if(isNaN(req.query.q) == false)
   { 
@@ -164,7 +190,6 @@ app.get("/backend/searchcountryhs/:index", async (req, res) => {
     }
     res.send(arr);
   }
-
 });
 
 
