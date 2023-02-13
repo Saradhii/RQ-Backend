@@ -120,11 +120,21 @@ app.get("/searchincountry/:index", async (req, res) => {
   res.json(data);
 });
 
+app.get("/backend/searchhs/:index", async (req, res) => {
+  const { phraseSearch } = require("./routes/AutoSearch");
+  const data = await phraseSearch(req.params.index, req.query.q);
+  res.json(data);
+});
+
+
+
 app.get("/search/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/SearchEngine");
   const data = await phraseSearch(req.params.index, req.query.q);
   res.json(data);
 });
+
+
 
 app.get("/backend/searchglobalres/:index", async(req,res)=>{
   const { phraseSearch } = require("./routes/Globalcount");
@@ -133,6 +143,7 @@ app.get("/backend/searchglobalres/:index", async(req,res)=>{
 });
 
 app.get("/backend/searchcountryhscode/:index", async(req,res)=>{
+
   // console.log(req.params.index,req.query.q,req.query.n);
   const {phraseSearchhs} = require("./routes/CountryHsCode");
   const { phraseSearch } = require("./routes/Globalhs");
@@ -158,6 +169,11 @@ app.get("/backend/searchcountryhscode/:index", async(req,res)=>{
   res.send(arr);
 });
 
+app.get("/backend/seo/:index",async(req,res)=>{
+  const { phraseSearch } = require("./routes/SEORoute");
+  const data = phraseSearch(req.params.index);
+  res.send(data);
+})
 app.get("/backend/searchcountryhs/:index", async (req, res) => {
   if(isNaN(req.query.q) == false)
   { 

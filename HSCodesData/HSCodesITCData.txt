@@ -8217,7 +8217,9 @@
 {"index":{}}
 {"chapter":"69","itc_hscode":"690790","description":"OTHER UNGLAZED TILES,CUBES ETC   ","unit":"N/A"}
 {"index":{}}
-{"chapter":"69","itc_hscode":"690890","description":"OTHER GLZD CERMC FLAGS ETC","unit":"N/A"}
+{"chapter":"69","itc_hscode":"690890","description":"Glazed ceramic flags and paving, hearth or wall tiles; glazed ceramic mosaic cubes and the like, whether or not on a backing (excluding of siliceous fossil meals or similar siliceous earths, refractory ceramic goods, tiles specially adapted as table mats, ornamental articles, tiles specifically manufactured for stoves, tiles and cubes and the like the largest surface area of which is capable of being enclosed in a square of side of 7 cm)","unit":"N/A"}
+{"index":{}}
+{"chapter":"69","itc_hscode":"690810","description":"Glazed ceramic tiles, mosaic cubes and similar articles, whether or not square or rectangular, the largest surface area of which is capable of being enclosed in a square of side of 7 cm, whether or not on a backing","unit":"N/A"}
 {"index":{}}
 {"chapter":"69","itc_hscode":"690911","description":"CERMC WARES FR LABRTRY ETC OF PORCELAIN","unit":"N/A"}
 {"index":{}}

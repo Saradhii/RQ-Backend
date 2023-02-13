@@ -41,4 +41,4 @@
 {"index":{}}
 {"section_level":"XXI","section_name":"Works of Art","section_no":"97-97","chapters":[{"chapter_no":"97","chapter_name":"Works of art, collectors' pieces and antiques"}]}
 {"index":{}}
-{"section_level":"XXII","section_name":"Unique HS Codes","section_no":"98-99","chapters":[{"chapter_no":"99","chapter_name":"unique"}]}
+{"section_level":"XXII","section_name":"Unique HS Codes","section_no":"98-99","chapters":[{"chapter_no":"98","chapter_name":"Special classification provisions"},{"chapter_no":"99","chapter_name":"unique"}]}
