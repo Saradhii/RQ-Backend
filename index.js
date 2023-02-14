@@ -124,8 +124,6 @@ app.get("/search/:index", async (req, res) => {
   res.json(data);
 });
 
-
-
 app.get("/backend/searchglobalres/:index", async(req,res)=>{
   const { phraseSearch } = require("./routes/Globalcount");
   const data = await phraseSearch(req.params.index, req.query.q);
