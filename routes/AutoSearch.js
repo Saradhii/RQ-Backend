@@ -90,7 +90,7 @@ const phraseSearch = async (_index, phrase) => {
     .search({
       index: _index,
       query: {
-        match: {
+        match_phrase_prefix: {
           hscode: {
             query: phrase
           }
