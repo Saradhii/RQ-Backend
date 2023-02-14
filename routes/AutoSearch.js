@@ -21,7 +21,7 @@ const phraseSearch = async (_index, phrase) => {
     const words = phrase.split(" ");
     const searchResult = await client.search({
         index: _index,
-        size:10000,
+        size:20,
         query:
         {bool:
          { must:
@@ -56,7 +56,7 @@ const phraseSearch = async (_index, phrase) => {
         const searchResult = await client
     .search({
       index: _index,
-      size:10000,
+      size:20,
       query: {
         dis_max: {
           queries: [
