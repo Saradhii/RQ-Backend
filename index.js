@@ -95,8 +95,6 @@ app.get("/backend/getsubheadings/:index", async (req, res) => {
 
 
 app.get("/searchcategory/:index/", async (req, res) => {
-  // console.log(req.params.index, req.query.category);
-  // console.log(req.query);
   const { phraseSearch } = require("./routes/SearchCategoty");
   const data = await phraseSearch(
     req.params.index,
