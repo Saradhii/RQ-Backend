@@ -111,12 +111,15 @@ app.get("/searchincountry/:index", async (req, res) => {
 });
 
 app.get("/backend/searchhs/:index", async (req, res) => {
+  let str = req.query.q;
+  str = str.trim();
+  str = str.replace(/\s+/g, " ");
+  str = str.replace(/[^a-zA-Z0-9 ]/g, "");
+  console.log(str);
   const { phraseSearch } = require("./routes/AutoSearch");
-  const data = await phraseSearch(req.params.index, req.query.q);
+  const data = await phraseSearch(req.params.index, str);
   res.json(data);
 });
-
-
 
 app.get("/search/:index", async (req, res) => {
   const { phraseSearch } = require("./routes/SearchEngine");

@@ -21,6 +21,7 @@ const phraseSearch = async (_index, phrase) => {
     const words = phrase.split(" ");
     const searchResult = await client.search({
         index: _index,
+        size:10000,
         query:
         {bool:
          { must:
@@ -50,9 +51,12 @@ const phraseSearch = async (_index, phrase) => {
       }
      else
     {
-    const searchResult = await client
+      if(isNaN(phrase))
+      {
+        const searchResult = await client
     .search({
       index: _index,
+      size:10000,
       query: {
         dis_max: {
           queries: [
@@ -60,7 +64,7 @@ const phraseSearch = async (_index, phrase) => {
               multi_match : {
                 query: phrase,
                 type:       "phrase_prefix",
-                fields: ["heading","description"],
+                fields: ["section","chapter","heading","description","hscode"],
                 minimum_should_match: "50%" 
               }
             },
@@ -78,7 +82,26 @@ const phraseSearch = async (_index, phrase) => {
     })
     .catch((e) => console.log("errr", e));
   return searchResult;
-  }
+      }
+      else{
+    phrase = phrase.slice(0,6);
+    console.log(phrase);
+    const searchResult = await client
+    .search({
+      index: _index,
+      query: {
+        match: {
+          hscode: {
+            query: phrase
+          }
+        }
+      },
+    })
+    .catch((e) => console.log("errr", e));
+  return searchResult;
+      }
+    }
+    
 };
 
 module.exports = {
