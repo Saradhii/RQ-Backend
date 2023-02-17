@@ -223,8 +223,6 @@
 {"index":{}}
 {"chapter":"15","itc_hscode":"1502","description":"FATS OF BOVINE ANIMALS, SHEEP OR GOATS, OTHER THAN THOSE OF HEADING 1503   ","unit":"N/A"}
 {"index":{}}
-{"chapter":"15","itc_hscode":"1503","description":"OR OTHERWISE PREPARED","unit":"N/A"}
-{"index":{}}
 {"chapter":"15","itc_hscode":"1504","description":"REFINED, BUT NOT CHEMICALLY MODIFIED   ","unit":"N/A"}
 {"index":{}}
 {"chapter":"15","itc_hscode":"1505","description":"WOOL GREASE AND FATTY SUBSTANCES DERIVED THEREFROM (INCLUDING LANOLIN)","unit":"N/A"}

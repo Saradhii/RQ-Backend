@@ -5,11 +5,17 @@ const client = new Client({
 });
 
 const phraseSearch = async (_index, phrase) => {
+
+  phrase = phrase.trim();
   if (phrase.includes(" ")) {
+    phrase = phrase.replace(/\s+/g, " ");
+    phrase = phrase.replace(/[^a-zA-Z0-9 ]/g, "");
+    console.log(phrase);
     const words = phrase.split(" ");
     const searchResult = await client
       .search({
         index: _index,
+        size: 1,
         query: {
           bool: {
             must: [
@@ -17,7 +23,7 @@ const phraseSearch = async (_index, phrase) => {
                 multi_match: {
                   query: words[0],
                   type: "phrase_prefix",
-                  fields: ["hscode", "description", "htsno", "itc_hscodes"],
+                  fields: ["hscode", "description", "htsno", "itc_hscode"],
                 },
               },
 
@@ -25,7 +31,7 @@ const phraseSearch = async (_index, phrase) => {
                 multi_match: {
                   query: words[1],
                   type: "phrase_prefix",
-                  fields: ["hscode", "description", "htsno", "itc_hscodes"],
+                  fields: ["hscode", "description", "htsno", "itc_hscode"],
                 },
               },
             ],
@@ -35,9 +41,16 @@ const phraseSearch = async (_index, phrase) => {
       .catch((e) => console.log("errr", e));
     return searchResult;
   } else {
+    phrase = phrase.replace(/[^a-zA-Z0-9 ]/g, "");
+    if(!isNaN(phrase) && (phrase.length<=10))
+    {
+      phrase = phrase.slice(0,5);
+    }
+    // console.log(phrase);
     const searchResult = await client
       .search({
         index: _index,
+        size: 1,
         query: {
           dis_max: {
             queries: [
@@ -45,7 +58,7 @@ const phraseSearch = async (_index, phrase) => {
                 multi_match: {
                   query: phrase,
                   type: "phrase_prefix",
-                  fields: ["hscode", "description", "htsno", "itc_hscodes"],
+                  fields: ["hscode", "description", "htsno", "itc_hscode"],
                   minimum_should_match: "50%",
                 },
               },
